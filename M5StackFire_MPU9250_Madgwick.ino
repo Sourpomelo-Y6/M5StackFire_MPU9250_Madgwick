@@ -20,8 +20,8 @@
 #include <M5Stack.h>
 #include "utility/MPU9250.h"
 
-#define FLT_MIN -3.40282346638e+38
-#define FLT_MAX 3.4028234663852886e+38
+#define FLT_MIN -3.4028234663852886e+38
+#define FLT_MAX  3.4028234663852886e+38
 
 #include <Preferences.h>
 Preferences preferences;
@@ -119,24 +119,24 @@ void loop()
     M5.Lcd.setCursor(y, 32); M5.Lcd.print("z");
 
     M5.Lcd.setTextColor(YELLOW , BLACK);
-    M5.Lcd.setCursor(0, 48); M5.Lcd.print((int)(1000 * IMU.ax));
-    M5.Lcd.setCursor(x, 48); M5.Lcd.print((int)(1000 * IMU.ay));
-    M5.Lcd.setCursor(y, 48); M5.Lcd.print((int)(1000 * IMU.az));
+    M5.Lcd.setCursor(0, 48); M5.Lcd.printf("%5d  ",(int)(1000 * IMU.ax));
+    M5.Lcd.setCursor(x, 48); M5.Lcd.printf("%5d  ",(int)(1000 * IMU.ay));
+    M5.Lcd.setCursor(y, 48); M5.Lcd.printf("%5d  ",(int)(1000 * IMU.az));
     M5.Lcd.setCursor(z, 48); M5.Lcd.print("mg");
 
-    M5.Lcd.setCursor(0, 64); M5.Lcd.printf("%5d",(int)(IMU.gx));
-    M5.Lcd.setCursor(x, 64); M5.Lcd.printf("%5d",(int)(IMU.gy));
-    M5.Lcd.setCursor(y, 64); M5.Lcd.printf("%5d",(int)(IMU.gz));
+    M5.Lcd.setCursor(0, 64); M5.Lcd.printf("%5d  ",(int)(IMU.gx));
+    M5.Lcd.setCursor(x, 64); M5.Lcd.printf("%5d  ",(int)(IMU.gy));
+    M5.Lcd.setCursor(y, 64); M5.Lcd.printf("%5d  ",(int)(IMU.gz));
     M5.Lcd.setCursor(z, 64); M5.Lcd.print("o/s");
 
-    M5.Lcd.setCursor(0, 80); M5.Lcd.printf("%5d",(int)(IMU.mx));
-    M5.Lcd.setCursor(x, 80); M5.Lcd.printf("%5d",(int)(IMU.my));
-    M5.Lcd.setCursor(y, 80); M5.Lcd.printf("%5d",(int)(IMU.mz));
+    M5.Lcd.setCursor(0, 80); M5.Lcd.printf("%5d  ",(int)(IMU.mx));
+    M5.Lcd.setCursor(x, 80); M5.Lcd.printf("%5d  ",(int)(IMU.my));
+    M5.Lcd.setCursor(y, 80); M5.Lcd.printf("%5d  ",(int)(IMU.mz));
     M5.Lcd.setCursor(z, 80); M5.Lcd.print("mG");
 
-    M5.Lcd.setCursor(0, 96); M5.Lcd.printf("%5.3f",pitch);
-    M5.Lcd.setCursor(x, 96); M5.Lcd.printf("%5.3f",roll);
-    M5.Lcd.setCursor(y, 96); M5.Lcd.printf("%5.3f",yaw);
+    M5.Lcd.setCursor(0, 96); M5.Lcd.printf("%5.3f  ",pitch);
+    M5.Lcd.setCursor(x, 96); M5.Lcd.printf("%5.3f  ",roll);
+    M5.Lcd.setCursor(y, 96); M5.Lcd.printf("%5.3f  ",yaw);
     M5.Lcd.setCursor(z, 96); M5.Lcd.printf("deg");
     
     //M5.Lcd.setCursor(0,  96); M5.Lcd.print("Gyro Temperature ");
@@ -305,7 +305,7 @@ void getCalibrationVal()
   preferences.begin("imu_calb_data", false);
   preferences.putFloat("ax", calb_accX);
   preferences.putFloat("ay", calb_accY);
-  preferences.putFloat("az", calb_accX);
+  preferences.putFloat("az", calb_accZ);
   preferences.putFloat("gx", calb_gyroX);
   preferences.putFloat("gy", calb_gyroY);
   preferences.putFloat("gz", calb_gyroZ);
